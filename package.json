@@ -15,12 +15,14 @@
     "cors": "^2.8.1",
     "express": "^4.14.0",
     "jwt-simple": "^0.5.0",
+    "knex": "^0.12.6",
     "mongoose": "^4.6.3",
     "morgan": "^1.7.0",
     "nodemon": "^1.11.0",
     "passport": "^0.3.2",
     "passport-jwt": "^2.1.0",
     "passport-local": "^1.0.0",
+    "pg": "^6.1.2",
     "sane-email-validation": "^1.0.0"
   }
 }
