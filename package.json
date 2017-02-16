@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt-as-promised": "^1.1.0",
-    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.16.1",
     "express": "^4.14.1",
     "jwt-simple": "^0.5.1",

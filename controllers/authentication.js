@@ -28,27 +28,30 @@ exports.signup = function(req, res, next) {
       }
     //If a user with email does NOT exist, create and save user record
       else {
-      const user = function User(email, password) {
-      this.email = email;
-      this.password = password;
+      function User(email, password) {
+        this.email = email;
+        this.password = password;
       }
+      var user = new User(email, password)
     //hash the password
+      bcrypt
       bcrypt.hash(password, 12)
       .then((hashed_password) => {
+        user.password = hashed_password;
         return dbConnection('users')
-      .insert({
-        email: email,
-        hashed_password: hashed_password
+        .insert({
+          email: user.email,
+          hashed_password: user.password
         }, '*');
       })
       .then((users) => {
         const user = users[0];
-        delete user.hashed_password;
+        delete user.password;
         //respond to the request indicating that the user was created
         res.json({ token: tokenForUser(user) });
       })
-        .catch((err) => {
-        next(err);
+      .catch((err) => {
+      next(err);
       });
     }
   })
