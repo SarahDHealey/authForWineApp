@@ -34,7 +34,6 @@ exports.signup = function(req, res, next) {
       }
       var user = new User(email, password)
     //hash the password
-      bcrypt
       bcrypt.hash(password, 12)
       .then((hashed_password) => {
         user.password = hashed_password;

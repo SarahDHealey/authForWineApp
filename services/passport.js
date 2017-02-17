@@ -12,12 +12,7 @@ const jwtOptions = {
 const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
   dbconnection('users')
   .where('id', payload.sub)
-  .then(function(err, user) {
-    console.log(err)
-    console.log(user)
-    if (err) {
-      return done(err, false);
-    }
+  .then(function(user) {
     if (user) {
       done(null, user);
     }
