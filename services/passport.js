@@ -4,23 +4,33 @@ const config = require('../config');
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const LocalStrategy = require('passport-local');
+const bcrypt = require('bcrypt-as-promised');
 
 //create local Strategy
 const localOptions = { usernameField: 'email' };
+
 const localLogin = new LocalStrategy(localOptions, function(email, password, done) {
-  //verify this email and password, call done with the user
-  //if it is the correc email and password
-  //otherwise call done with false
-  dbConnection('users')
+
+  return dbConnection('users')
+  .first()
   .where('email', email)
   .then((user) => {
     if (user) {
-    //compare passwords - is 'password' equal to user.password?
-    //but we need to decode  the stored password and compare it to the norm 
-    //pw
+      bcrypt.compare(password, user.hashed_password)
+      .then((success)=> {
+        console.log('you have success', user);
+        return done(null, user);
+      })
+      .catch(bcrypt.MISMATCH_ERROR, (error)=> {
+        console.log('you have mismatch', error)
+        return done(null, false)
+      })
+      .catch((error) => {
+        return done(error)
+      })
     }
     else {
-      done(null, false);
+      console.log('shit a brick, user not found')
     }
   })
 })
@@ -44,5 +54,6 @@ const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
 });
 
 passport.use(jwtLogin);
+passport.use(localLogin);
 
 

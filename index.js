@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const app = express();
 const router = require('./router');
+const cors = require('cors');
+
+app.use(cors());
 
 // App Setup
 app.use(morgan('combined'));

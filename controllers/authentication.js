@@ -57,35 +57,5 @@ exports.signup = function(req, res, next) {
 }
 
 exports.signin = function(req, res, next) {
-
-  const email = req.body.email;
-  const password = req.body.password;
-
-  if(!email || !password) {
-    return res.status(422).send({ error: 'You must provide email and password '});
-  }
-//Compare passwords - is password equal to user.password?
-  return dbConnection('users')
-  .first()
-  .where('email', email)
-  .then((user) => {
-    if(!user) {
-      res.status(422).send({ error: 'invalid email/password combination' });
-    }
-    else {
-      if (user.hashed_password !== null) {
-        bcrypt.compare(password, user.hashed_password)
-        .then((success)=> {
-          console.log('happy path')
-        })
-        .catch(bcrypt.MISMATCH_ERROR, (error)=> {
-          console.log('passwords do not match, sad path')
-        })
-        .catch((error) => {
-          console.log('whoa, there errrrorr')
-        });
-      }
-    }
-  })
-
+  res.send({token: tokenForUser(req.user) })
 }
