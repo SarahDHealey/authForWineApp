@@ -30,7 +30,7 @@ const localLogin = new LocalStrategy(localOptions, function(email, password, don
       })
     }
     else {
-      console.log('shit a brick, user not found')
+      done(null, false)
     }
   })
 })
