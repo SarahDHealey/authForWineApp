@@ -11,3 +11,5 @@ return knex.schema.createTable('users', (table) => {
 exports.down = function(knex) {
   return knex.schema.dropTable('users');
 };
+
+
