@@ -1,7 +1,10 @@
 module.exports = {
     development: {
       client: 'pg',
-      connection: 'postgres://localhost/wine_development'
+      connection: 'postgres://localhost/wine_development',
+      seeds: {
+        directory: './seeds/dev'
+      }
     },
     production: {
       client: 'pg',
