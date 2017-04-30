@@ -50,8 +50,8 @@ exports.seed = function(knex, Promise) {
           id: 7, 
           rating: 2,
           users_id: 1,
-          wine_id: 8,
-          note_text: 'Much too sweet for my taste. Refreshing, but the peach wasn\'t as good as I expected. Smelled a bit like a candle.'
+          wine_id: 7,
+          note_text: 'Creamy and buttery flavors. Wasn\'t what I was expecting - in a good way. Smells a bit like a candle.'
         },
         {
           id: 8, 
