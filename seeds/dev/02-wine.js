@@ -9,7 +9,7 @@ exports.seed = function(knex, Promise) {
 					name: "Lenné",
           type: "Pinot Noir",
 					url: "http://www.lenneestate.com/pinot-noir",
-					description: "Lenné Estate is our signature wine and is a selection of the best barrels from the vineyard. The 2013 Lenné Pinot Noir has black cherry, forrest floor and mocha aromas. On the palate the wine has a mouthwatering acidity and fine grained tannins contributing to a long finish. The 2013's wines are changing quickly and by late fall of 2013 should be delicious wines."
+					description: "Lenné Estate is our signature wine and is a selection of the best barrels from the vineyard. The 2013 Lenné Pinot Noir has black cherry, forrest floor and mocha aromas. On the palate the wine has a mouthwatering acidity and fine grained tannins contributing to a long finish. The 2013's wines are changing quickly and by late fall of 2013 should be delicious wines.",
 					wine_label_picture: "https://s3-us-west-1.amazonaws.com/wineapplost/wineappimages/labels/lenneLabel.png",
 					wine_bottle_img: "https://s3-us-west-1.amazonaws.com/wineapplost/wineappimages/lenneBottleRedWine2013Med.png",
 					bottle_price: 30,
@@ -55,7 +55,7 @@ exports.seed = function(knex, Promise) {
           id: 5, 
 					color: "white",
 					name: "Cucú",
-          type: "Semillon Sauvignon Blanc",
+          type: "Verdejo",
 					url: "https://www.barcodelcorneta.com/?lang=en",
 					description: "With a particular interest in the Verdejo grape (which strikes me as being rather like Sauvignon Blanc on steroids), young winemaker Beatriz Herranz launched her own estate, El Barco del Corneto, as recently as 2008. Working organically and treating a proportion of the grapes to fermentation in French oak, she demonstrates in Cucú just how impressive Verdejo can be while still remaining versatile enough to enjoy as an aperitif or with light summery food. With overtones of grapefruit, pineapple, lime and fresh herbs, it suits zesty salads and vegetable dishes of many kinds as well as seafood.",
 					wine_label_picture: "https://s3-us-west-1.amazonaws.com/wineapplost/wineappimages/labels/CuCuLabel.png",
@@ -101,31 +101,39 @@ exports.seed = function(knex, Promise) {
         },
         {
           id: 9, 
-          rating: 1,
-          users_id: 1,
-          wine_id: 9,
-          note_text: 'Bold leading fruit flavor with a well-rounded body, but still very complicated sweet and smokey taste.'
+					color: "white",
+					name: "Kung Fu Girl",
+          type: "Reisling",
+					url: "https://www.pegasusbay.com/",
+					description: "Charles Smith Kung-Fu Girl Riesling is a off-dry Riesling (think dryer side of Kabinett) coming from Evergreen Vineyard in Columbia Valley. Charles Smith Kung-Fu Girl Riesling offers up a gorgeously pure, fresh bouquet of lychee nut, mint, citrus and clean minerality, this beautifully focused Riesling flows onto the palate with a balanced, full mid-palate, only a touch of sweetness and integrated, yet lip smacking acidity that shines on the finish.",
+					wine_label_picture: "https://s3-us-west-1.amazonaws.com/wineapplost/wineappimages/labels/kungFuGirlLabel.png",
+					wine_bottle_img: "https://s3-us-west-1.amazonaws.com/wineapplost/wineappimages/kungFuGirlBottleMed.png",
+					bottle_price: 13.99,
+          winemaker_id: 9 
         },
         {
           id: 10, 
-          rating: 3,
-          users_id: 1,
-          wine_id: 10,
-          note_text: 'Plummy and jammy initially, but then follows with more complex undertones that are surprisingly peppery.'
+					color: "red",
+					name: "Main Divide",
+          type: "Pinot Noir",
+					url: "https://www.pegasusbay.com/",
+					description: "The Donaldson family, founders and owners of Pegasus Bay and Main Divide, are an interesting bunch. Ivan Donaldson was a neurologist at the hospital in Christchurch and he made hobby wines. He planted a vineyard with his friends, many of whom were fellow medics: just an acre of vines on the outskirts of Christchurch, with a range of varieties. In 1985 they bought a larger property in Waipara Valley. A little bit of wine was made in 1990, but the first Pegasus Bay release was the 1991, made in their Christchurch garage. Matt, one of Donaldson’s sons processed 18 tons at the winery in 1992 after he returned from wine school. Main Divide was initially created so that the quality of Pegasus Bay could be improved. ‘It started off as a bit of a dumping ground,’ says Matt, ‘but 12 or 13 years ago we realised that if we bought some fruit we could make it better and make a good wine. It has become a bigger volume than Pegasus Bay now and it allows us to afford to do what we want with Pegasus Bay.",
+					wine_label_picture: "https://s3-us-west-1.amazonaws.com/wineapplost/wineappimages/labels/mainDividePinotNoirLabel.png",
+					wine_bottle_img: "https://s3-us-west-1.amazonaws.com/wineapplost/wineappimages/mainDividePinotNoirBottleMed.png",
+					bottle_price: 16.11,
+          winemaker_id: 8 
         },
         {
           id: 11, 
-          rating: 3,
-          users_id: 1,
-          wine_id: 11,
-          note_text: 'Plummy and jammy initially, but then follows with more complex undertones that are surprisingly peppery.'
-        },     
-        {
-          id: 12, 
-          rating: 3,
-          users_id: 1,
-          wine_id: 12,
-          note_text: 'Cherry with hints of chocolateness, high alcohol content, smooth finish.'
+					color: "white",
+					name: "Lovamor",
+          type: "Albillo",
+					url: "http://www.alfredomaestro.com/index.php/en/wines",
+					description: "The 2013 Lovamor is a white produced with Albillo Real grapes sourced from different plots around Penafiel. The destemmed grapes were macerated in contact with the skins for one week before fermenting in 1,000-liter stainless steel tanks. The wine has a cloudy, golden color with some orange tints and a nose of baked apples, green apples, honey and chamomile. The palate is medium-bodied, with marked acidity (no malo) with a chalky, austere texture, quite sharp, unlike the nose. This is a white of strong personality that will not please everyone. It was bottled unoaked in 4,000 bottles.",
+					wine_label_picture: "https://s3-us-west-1.amazonaws.com/wineapplost/wineappimages/labels/lovamorLabel.jpg",
+					wine_bottle_img: "https://s3-us-west-1.amazonaws.com/wineapplost/wineappimages/lovamorWhite2013.png",
+					bottle_price: 16.11,
+          winemaker_id: 3 
         }
         ]
     });

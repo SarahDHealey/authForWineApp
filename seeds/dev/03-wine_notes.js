@@ -65,7 +65,7 @@ exports.seed = function(knex, Promise) {
           rating: 1,
           users_id: 1,
           wine_id: 9,
-          note_text: 'Bold leading fruit flavor with a well-rounded body, but still very complicated sweet and smokey taste.'
+          note_text: 'Bold leading fruit flavor with a well-rounded body, but still very complicated sweet and refreshing taste.'
         },
         {
           id: 10, 
@@ -80,14 +80,7 @@ exports.seed = function(knex, Promise) {
           users_id: 1,
           wine_id: 11,
           note_text: 'Plummy and jammy initially, but then follows with more complex undertones that are surprisingly peppery.'
-        },     
-        {
-          id: 12, 
-          rating: 3,
-          users_id: 1,
-          wine_id: 12,
-          note_text: 'Cherry with hints of chocolateness, high alcohol content, smooth finish.'
-        }
+        }     
         ]
     });
 };
