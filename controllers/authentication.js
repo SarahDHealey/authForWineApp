@@ -33,7 +33,7 @@ exports.signup = function(req, res, next) {
         this.password = password;
       }
       var user = new User(email, password)
-    //hash the password
+      //hash the password
       bcrypt.hash(password, 12)
       .then((hashed_password) => {
         user.password = hashed_password;
@@ -47,7 +47,14 @@ exports.signup = function(req, res, next) {
         const user = users[0];
         delete user.password;
         //respond to the request indicating that the user was created
-        res.json({ token: tokenForUser(user) });
+
+        // *****************
+        // *****************
+        // here is where you are playing
+        res.json({ 
+          userId: user.id,
+          token: tokenForUser(user)
+        });
       })
       .catch((err) => {
       next(err);
@@ -57,5 +64,5 @@ exports.signup = function(req, res, next) {
 }
 
 exports.signin = function(req, res, next) {
-  res.send({token: tokenForUser(req.user) })
+  res.send({token: tokenForUser(req.user)})
 }
