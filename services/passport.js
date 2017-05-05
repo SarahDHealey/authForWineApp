@@ -10,7 +10,6 @@ const bcrypt = require('bcrypt-as-promised');
 const localOptions = { usernameField: 'email' };
 
 const localLogin = new LocalStrategy(localOptions, function(email, password, done) {
-
   return dbConnection('users')
   .first()
   .where('email', email)
@@ -18,11 +17,9 @@ const localLogin = new LocalStrategy(localOptions, function(email, password, don
     if (user) {
       bcrypt.compare(password, user.hashed_password)
       .then((success)=> {
-        console.log('you have success', user);
         return done(null, user);
       })
       .catch(bcrypt.MISMATCH_ERROR, (error)=> {
-        console.log('you have mismatch', error)
         return done(null, false)
       })
       .catch((error) => {
