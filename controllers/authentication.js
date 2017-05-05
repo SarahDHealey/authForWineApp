@@ -74,5 +74,6 @@ exports.signup = function(req, res, next) {
 }
 
 exports.signin = function(req, res, next) {
-  res.send({token: tokenForUser(req.user)})
+  console.log("what does req.user look like in auth signin fn", req.user)
+  res.send({token: tokenForUser(req.user), userId: req.user.id})
 }
