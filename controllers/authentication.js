@@ -4,21 +4,6 @@ const jwt = require('jwt-simple');
 const config = require('../config');
 
 function tokenForUser(user) {
-  // looking at ways to pass the user id through to the signin fn
-  // ************************************************
-  // ************************************************
-  // const tokenAndUserArray = [];
-  // const timestamp = new Date().getTime();
-  // const encodedToken = jwt.encode({ sub: user.id, iat: timestamp }, config.secret);
-  // const userId = user.id;
-  // tokenAndUserArray.push(encodedToken);
-  // tokenAndUserArray.push(userId);
-  // console.log("tokandarr: ", tokenAndUserArray)
-  // return tokenAndUserArray
-
-  // these two lines in this fn work
-  // ************************************************
-  // ************************************************
   const timestamp = new Date().getTime();
   return jwt.encode({ sub: user.id, iat: timestamp }, config.secret)
 }
