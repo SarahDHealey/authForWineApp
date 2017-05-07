@@ -14,14 +14,16 @@ module.exports = function(app) {
   });
 
   app.get('/wine_profile/:id', requireAuth, function(req, res) {
-    console.log("in the route, this is what is getting passed in", req.params.id)
-    knex('wine_notes')
-    .select()
+    var wine_notes
+    knex('wine_notes').select()
     .where('users_id', req.params.id)
-    .then(wines => {
-    res.send({wines: wines});
+    .then(ret => {
+      wine_notes = ret
+      return knex('wine').select()
+    }).then(wines => {
+      res.status(String(200)).send({wines:wines, wine_notes:wine_notes})
     })
-  });
+  })
 
   app.post('/signin', requireSignin, Authentication.signin)
   app.post('/signup', Authentication.signup)

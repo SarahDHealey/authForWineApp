@@ -80,6 +80,13 @@ exports.seed = function(knex, Promise) {
       users_id: 1,
       wine_id: 11,
       note_text: 'Plummy and jammy initially, but then follows with more complex undertones that are surprisingly peppery.'
+    }), 
+    knex('wine_notes').insert({
+      id: 12, 
+      rating: 5,
+      users_id: 2,
+      wine_id: 11,
+      note_text: 'Really loving this wine. Great for summer!'
     })     
   );
 };
