@@ -14,8 +14,10 @@ module.exports = function(app) {
   });
 
   app.get('/wine_profile/:id', requireAuth, function(req, res) {
-    knex('wine')
+    console.log("in the route, this is what is getting passed in", req.params.id)
+    knex('wine_notes')
     .select()
+    .where('users_id', req.params.id)
     .then(wines => {
     res.send({wines: wines});
     })
