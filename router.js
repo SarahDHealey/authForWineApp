@@ -14,12 +14,14 @@ module.exports = function(app) {
   });
 
   app.get('/wine_profile/:id', requireAuth, function(req, res) {
+    var id = Number(req.params.id)
     var wine_notes
     knex('wine_notes').select()
-    .where('users_id', req.params.id)
+    .where('users_id', id)
     .then(ret => {
       wine_notes = ret
-      return knex('wine').select()
+      return knex.from('wine').innerJoin('wine_notes', 'wine_notes.wine_id', 'wine.id')
+      .where('wine_notes.users_id', id);
     }).then(wines => {
       res.status(String(200)).send({wines:wines, wine_notes:wine_notes})
     })
