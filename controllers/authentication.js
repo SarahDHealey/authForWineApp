@@ -9,9 +9,11 @@ function tokenForUser(user) {
 }
 
 exports.signup = function(req, res, next) {
-
+  const name = req.body.name;
+  const username = req.body.username;
   const email = req.body.email;
   const password = req.body.password;
+  const admin = false;
 
   if(!email || !password) {
     return res.status(422).send({ error: 'You must provide email and password '});
@@ -28,19 +30,24 @@ exports.signup = function(req, res, next) {
       }
     //If a user with email does NOT exist, create and save user record
       else {
-      function User(email, password) {
+      function User(name, username, email, password) {
+        this.name = name;
+        this.username = username;
         this.email = email;
         this.password = password;
       }
-      var user = new User(email, password)
+      var user = new User(name, username, email, password)
       //hash the password
       bcrypt.hash(password, 12)
       .then((hashed_password) => {
         user.password = hashed_password;
         return dbConnection('users')
         .insert({
+          name: user.name,
+          username: user.username,
           email: user.email,
-          hashed_password: user.password
+          hashed_password: user.password,
+          admin: false
         }, '*');
       })
       .then((users) => {
